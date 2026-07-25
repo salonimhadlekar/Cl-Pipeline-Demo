@@ -1,18 +1,26 @@
-name: Cl Pipeline
-On:
-Push:
-branches:
--main
-Jobs:
-Build:
-runs-on: Ubuntu latest
-Steps:
--names: Checkout Repositary
-uses: actions/checkout@v4
--name: Display Welcome Message
-run: echo "Continuous Integration Started"
-run: pwd
--name: List Repository Files
-run: ls
--name: Display Completion Message
-run: echo "Pipeline Executed Successfully"
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display Welcome Message
+        run: echo "Continuous Integration Started"
+
+      - name: Display Current Directory
+        run: pwd
+
+      - name: List Repository Files
+        run: ls
+
+      - name: Display Completion Message
+        run: echo "Pipeline Executed Successfully"
